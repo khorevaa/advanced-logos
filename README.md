@@ -1,21 +1,38 @@
-# oscript-coverage
+# 
 
-[![Stars](https://img.shields.io/github/stars/khorevaa/oscript-coverage.svg?label=Github%20%E2%98%85&a)](https://github.com/khorevaa/oscript-coverage/stargazers)
-[![Release](https://img.shields.io/github/tag/khorevaa/oscript-coverage.svg?label=Last%20release&a)](https://github.com/khorevaa/oscript-coverage/releases)
-[![Открытый чат проекта https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/khorevaa/oscript-coverage.png)](https://gitter.im/EvilBeaver/oscript-library)
+[![Stars](https://img.shields.io/github/stars/khorevaa/logos-color-console.svg?label=Github%20%E2%98%85&a)](https://github.com/khorevaa/logos-color-console/stargazers)
+[![Release](https://img.shields.io/github/tag/khorevaa/logos-color-console.svg?label=Last%20release&a)](https://github.com/khorevaa/logos-color-console/releases)
+[![Открытый чат проекта https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/khorevaa/logos-color-console.png)](https://gitter.im/EvilBeaver/oscript-library)
 
-[![Build Status](https://travis-ci.org/khorevaa/oscript-coverage.svg?branch=master)](https://travis-ci.org/khorevaa/oscript-coverage)
-[![Coverage Status](https://coveralls.io/repos/github/khorevaa/oscript-coverage/badge.svg?branch=master)](https://coveralls.io/github/khorevaa/oscript-coverage?branch=master)
+[![Build Status](https://travis-ci.org/khorevaa/logos-color-console.svg?branch=master)](https://travis-ci.org/khorevaa/logos-color-console)
+[![Coverage Status](https://coveralls.io/repos/github/khorevaa/logos-color-console/badge.svg?branch=master)](https://coveralls.io/github/khorevaa/logos-color-console?branch=master)
 
-# Библиотека для xxx
+# Библиотека `logos-color-console`
+
+> Библиотека реализует класс `ЦветнойВыводЛогаКонсоль` для цветного вывода в консоль
+
+![Пример вывода лога](img/example_en.png)
+## Особенности
+
+> Данный класс вывода сообщения игнорирует форматирование сообщений сторонними форматтерами
 
 ## Возможности
 
+* Красивый и цветной вывода логов в консоль
+* Вывод префиксов сообщений (дополнительной информации после уровня сообщения)
+* Вывод даты события
+* Вывод цветных ключей дополнительных полей
+* Цветовая раскраска по уровням сообщения
+* `Две` встроенных карты названий сообщений (RU и ENG) 
+* Возможность задать свою карту названий уровней сообщений
+* Возможность задать свой формат даты события сообщений
+* Возможность задать свою цветовую гамму уровней сообщений, даты события и префикса
+* Возможность отключать вывод даты, префиксов и цвета
 
 ## Установка
 
 Для установки необходимо:
-* Скачать файл coverage.ospx из раздела [releases](https://github.com/khorevaa/oscript-coverage/releases)
+* Скачать файл logos-color-console*.ospx из раздела [releases](https://github.com/khorevaa/logos-color-console/releases)
 * Воспользоваться командой:
 
 ```
@@ -24,14 +41,34 @@ opm install -f <ПутьКФайлу>
 или установить с хаба пакетов
 
 ```
-opm install coverage
+opm install logos-color-console
 ```
 
 ## Пример работы
 
+* Добавление как способа вывода логов
+```bsl
+
+    Лог = Логирование.ПолучитьЛог("oscript.lib.logos");
+    ЦветнойВывод = Новый ЦветнойВыводЛогаКонсоль;
+    Лог.ДобавитьСпособВывода(ЦветнойВывод);
+
+    Лог.Информация("Сообщение лога");
+	
 ```
 
+* Вывод информации с префиксом
+```bsl
+
+    Лог = Логирование.ПолучитьЛог("oscript.lib.logos");
+    ЦветнойВывод = Новый ЦветнойВыводЛогаКонсоль;
+    Лог.ДобавитьСпособВывода(ЦветнойВывод);
+
+    Лог.Поля("prefix", "connect").Информация("Сообщение лога");
+	
 ```
+
+> Больше примеров смотри [тут](/tests/ЦветнаяКонсоль_test.os)
 
 ## Публичный интерфейс
 
