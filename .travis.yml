@@ -6,7 +6,7 @@ notifications:
 env:
   global:
   - CHANNEL=dev
-  - PACKAGE_NAME=package-name
+  - PACKAGE_NAME=logos-color-console
   matrix:
   - OSCRIPT_VERSION=1_0_18
   - OSCRIPT_VERSION=1_0_19
