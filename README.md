@@ -1,29 +1,33 @@
-# 
+# `advanced-logos`
 
-[![Stars](https://img.shields.io/github/stars/khorevaa/logos-color-console.svg?label=Github%20%E2%98%85&a)](https://github.com/khorevaa/logos-color-console/stargazers)
-[![Release](https://img.shields.io/github/tag/khorevaa/logos-color-console.svg?label=Last%20release&a)](https://github.com/khorevaa/logos-color-console/releases)
-[![Открытый чат проекта https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/khorevaa/logos-color-console.png)](https://gitter.im/EvilBeaver/oscript-library)
+[![Stars](https://img.shields.io/github/stars/khorevaa/advanced-logos.svg?label=Github%20%E2%98%85&a)](https://github.com/khorevaa/advanced-logos/stargazers)
+[![Release](https://img.shields.io/github/tag/khorevaa/advanced-logos.svg?label=Last%20release&a)](https://github.com/khorevaa/advanced-logos/releases)
+[![Открытый чат проекта https://gitter.im/EvilBeaver/oscript-library](https://badges.gitter.im/khorevaa/advanced-logos.png)](https://gitter.im/EvilBeaver/oscript-library)
 
-[![Build Status](https://travis-ci.org/khorevaa/logos-color-console.svg?branch=master)](https://travis-ci.org/khorevaa/logos-color-console)
-[![Coverage Status](https://coveralls.io/repos/github/khorevaa/logos-color-console/badge.svg?branch=master)](https://coveralls.io/github/khorevaa/logos-color-console?branch=master)
+[![Build Status](https://travis-ci.org/khorevaa/advanced-logos.svg?branch=master)](https://travis-ci.org/khorevaa/advanced-logos)
+[![Coverage Status](https://coveralls.io/repos/github/khorevaa/advanced-logos/badge.svg?branch=master)](https://coveralls.io/github/khorevaa/advanced-logos?branch=master)
 
-# Библиотека `logos-color-console`
+# Библиотека `advanced-logos`
 
-> Библиотека реализует класс `ЦветнойВыводЛогаКонсоль` для цветного вывода в консоль
+> Библиотека добавляет форматеры/раскладки сообщений и цветной вывод лога в консоль для работы с логами из библиотеки `logos`
 
 * Вывод лога в стандартной раскладке
     ![Пример вывода лога](img/example_en.png)
-* Вывод лога с русской раскладке
+* Вывод лога в русской раскладке
     ![Пример вывода лога](img/example_ru.png)
+
 ## Особенности
 
-> Данный класс вывода сообщения игнорирует форматирование сообщений сторонними `раскладками` библиотеки `logos`
+* Для вывода в цветную консоль используется форматирование сообщения с помощью класса `УлучшенныйФорматЛога`
+  Другое форматирование (раскладки) сообщения игнорируется. 
+
+* Для работы требуется логос из ветки https://github.com/khorevaa/logos/tree/feature/struct-logs& Ждем принятия PR
 
 ## Возможности
 
 * Красивый и цветной вывода логов в консоль
-* Вывод префиксов сообщений (дополнительной информации после уровня сообщения)
-* Вывод даты события
+* Вывод префиксов сообщений (дополнительной информации после уровня сообщения, по умолчанию это имя лога)
+* Вывод даты события в читаемом формате с милисекундами
 * Вывод цветных ключей дополнительных полей
 * Цветовая раскраска по уровням сообщения
 * `Две` встроенных карты названий сообщений (RU и ENG) 
@@ -31,11 +35,14 @@
 * Возможность задать свой формат даты события сообщений
 * Возможность задать свою цветовую гамму уровней сообщений, даты события и префикса
 * Возможность отключать вывод даты, префиксов и цвета
+* 2 форматера (`раскладки`) сообщений:
+    * `УлучшенныйФорматЛога` - используется для раскраски при выводе лога в консоль, но может быть использовать самостоятельно, имеет ряд настроек.
+    * `JSONФорматЛога` - используется для формирования данных события лога в json-формате. Формат легко читается любыми лог-анализаторами
 
 ## Установка
 
 Для установки необходимо:
-* Скачать файл logos-color-console*.ospx из раздела [releases](https://github.com/khorevaa/logos-color-console/releases)
+* Скачать файл advanced-logos*.ospx из раздела [releases](https://github.com/khorevaa/advanced-logos/releases)
 * Воспользоваться командой:
 
 ```
@@ -44,7 +51,7 @@ opm install -f <ПутьКФайлу>
 или установить с хаба пакетов
 
 ```
-opm install logos-color-console
+opm install advanced-logos
 ```
 
 ## Пример работы
@@ -70,6 +77,23 @@ opm install logos-color-console
     Лог.Поля("prefix", "connect").Информация("Сообщение лога");
 	
 ```
+
+* Вывод информации в json формате
+```bsl
+
+    Лог = Логирование.ПолучитьЛог("oscript.lib.logos");
+ 	JSONФорматЛога = Новый JSONФорматЛога;
+	ДобавитьСебяКакОбработчикаВывода();
+
+	Лог.УстановитьРаскладку(JSONФорматЛога);
+	
+    Лог.Поля("prefix", "connect", "корова", 200, "адрес", "server.com").Ошибка("Вывод 
+	| ошибка");
+	
+    // {"time":"2019-02-03T14:16:13.745Z","level":"ERROR","msg":"Вывод \n ошибка","log":"testing","prefix":"connect","корова":200,"адрес":"server.com"}
+
+```
+
 
 > Больше примеров смотри [тут](/tests/ЦветнаяКонсоль_test.os)
 
