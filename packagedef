@@ -3,7 +3,7 @@
 // Полную документацию см. на hub.oscript.io/packaging
 //
 
-Описание.Имя("logos-color-console")
+Описание.Имя("advanced-logos")
         .Версия("0.1.0")
         .Автор("Khorev Aleksey")
         .АдресАвтора("Khorevaa@gmail.com")
