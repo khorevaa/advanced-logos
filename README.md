@@ -1,4 +1,4 @@
-# 
+# `advanced-logos`
 
 [![Stars](https://img.shields.io/github/stars/khorevaa/advanced-logos.svg?label=Github%20%E2%98%85&a)](https://github.com/khorevaa/advanced-logos/stargazers)
 [![Release](https://img.shields.io/github/tag/khorevaa/advanced-logos.svg?label=Last%20release&a)](https://github.com/khorevaa/advanced-logos/releases)
@@ -9,7 +9,7 @@
 
 # Библиотека `advanced-logos`
 
-> Библиотека добавлять форматеры сообщений и цветной вывод лога в консоль для библиотеки `logos`
+> Библиотека добавляет форматеры/раскладки сообщений и цветной вывод лога в консоль для работы с логами из библиотеки `logos`
 
 * Вывод лога в стандартной раскладке
     ![Пример вывода лога](img/example_en.png)
@@ -18,8 +18,8 @@
 
 ## Особенности
 
-* Для вывода в цветную консоль используется форматирование сообщений с помощью класса `УлучшенныйФорматЛога`
-  Другие раскладки (форматирование) сообщений игнорируется. 
+* Для вывода в цветную консоль используется форматирование сообщения с помощью класса `УлучшенныйФорматЛога`
+  Другое форматирование (раскладки) сообщения игнорируется. 
 
 * Для работы требуется логос из ветки https://github.com/khorevaa/logos/tree/feature/struct-logs& Ждем принятия PR
 
